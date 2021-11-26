@@ -11,11 +11,11 @@ const Footer = () => {
             <strong>
                 <span>Copyright © {DateTime.now().toFormat('y')} </span>
                 <a
-                    href="https://erdkse.com"
+                    href="https://hespress.com"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    erdkse.com
+                    E-Pharma
                 </a>
                 <span>.</span>
             </strong>

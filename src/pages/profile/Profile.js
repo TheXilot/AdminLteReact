@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
-import {ContentHeader, Button} from '@components';
+// import {ContentHeader, Button} from '@components';
+import {ContentHeader} from '@components';
 import ActivityTab from './ActivityTab';
 import TimelineTab from './TimelineTab';
 import SettingsTab from './SettingsTab';
@@ -30,12 +31,15 @@ const Profile = () => {
                                         />
                                     </div>
                                     <h3 className="profile-username text-center">
-                                        Nina Mcintire
+                                        Belfkih Mohammed Amine
                                     </h3>
                                     <p className="text-muted text-center">
-                                        Software Engineer
+                                        Thexilot@gmail.com
                                     </p>
-                                    <ul className="list-group list-group-unbordered mb-3">
+                                    <p className="text-muted text-center font-weight-bold">
+                                        Super Admin
+                                    </p>
+                                    {/* <ul className="list-group list-group-unbordered mb-3">
                                         <li className="list-group-item">
                                             <b>{t('header.user.followers')}</b>
 
@@ -55,10 +59,10 @@ const Profile = () => {
                                                 13,287
                                             </span>
                                         </li>
-                                    </ul>
-                                    <Button block>
+                                    </ul> */}
+                                    {/* <Button block>
                                         {t('main.label.follow')}
-                                    </Button>
+                                    </Button> */}
                                 </div>
                                 {/* /.card-body */}
                             </div>

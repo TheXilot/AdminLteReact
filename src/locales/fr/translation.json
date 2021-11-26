@@ -1,51 +1,51 @@
 {
     "login": {
         "label": {
-            "signIn": "Sign in to start your session",
-            "rememberMe": "Remember Me",
-            "forgotPass": "I forgot my password",
-            "registerNew": "Register a new membership"
+            "signIn": "Connectez-vous pour démarrer votre session",
+            "rememberMe": "Souviens-toi de moi",
+            "forgotPass": "j'ai oublié mon mot de passe",
+            "registerNew": "Enregistrer une nouvelle adhésion"
         },
         "button": {
             "signIn": {
-                "label": "Sign In",
-                "social": "Sign in using {{what}}"
+                "label": "S'identifier",
+                "social": "Connectez-vous en utilisant {{what}}"
             },
             "signUp": {
-                "label": "Sign Up",
-                "social": "Sign up using {{what}}"
+                "label": "S'inscrire",
+                "social": "Inscrivez-vous en utilisant {{what}}"
             },
-            "signOut": "Sign Out"
+            "signOut": "Se déconnecter"
         }
     },
     "register": {
-        "alreadyHave": "I already have a membership",
-        "registerNew": "Register a new membership",
-        "label": "Register"
+        "alreadyHave": "j'ai déjà un abonnement",
+        "registerNew": "Enregistrer une nouvelle adhésion",
+        "label": "S'inscrire"
     },
     "recover": {
-        "forgotYourPassword": "You forgot your password? Here you can easily retrieve a new password.",
-        "oneStepAway": "You are only one step a way from your new password, recover your password now.",
-        "changePassword": "Change Password",
-        "requestNewPassword": "Request New Password"
+        "forgotYourPassword": "Vous avez oublié votre mot de passe ? Ici, vous pouvez facilement récupérer un nouveau mot de passe.",
+        "oneStepAway": "Vous n'êtes qu'à une étape de votre nouveau mot de passe, récupérez votre mot de passe maintenant.",
+        "changePassword": "Changer le mot de passe",
+        "requestNewPassword": "Demander un nouveau mot de passe"
     },
     "main": {
         "label": {
-            "moreInfo": "More info",
-            "follow": "Follow",
-            "aboutMe": "About Me",
-            "education": "Education",
-            "location": "Location",
-            "skills": "Skills",
-            "notes": "Notes",
-            "activity": "Activity",
-            "timeline": "Timeline",
-            "settings": "Settings"
+            "moreInfo": "Plus d'informations",
+            "follow": "Suivre",
+            "aboutMe": "À propos de moi",
+            "education": "Éducation",
+            "location": "Emplacement",
+            "skills": "Compétences",
+            "notes": "Remarques",
+            "activity": "Activité",
+            "timeline": "Chronologie",
+            "settings": "Paramètres"
         }
     },
     "header": {
         "label": {
-            "home": "Home",
+            "home": "Accueil",
             "contact": "Contact"
         },
         "language": {
@@ -68,28 +68,27 @@
         },
         "user": {
             "profile": "Profile",
-            "followers": "Followers",
-            "sales": "Sales",
-            "friends": "Friends"
+            "followers": "Suiveurs",
+            "sales": "Ventes",
+            "friends": "Amis"
         }
     },
     "menusidebar": {
         "label": {
-            "dashboard": "Dashboard",
+            "dashboard": "Tableau de bord",
             "profile": "Profile",
-            "blank": "Blank",
-            "mainMenu": "Main Menu",
-            "subMenu": "Sub Menu"
+            "blank": "Vierge",
+            "mainMenu": "Menu principal",
+            "subMenu": "Sous-menu"
         }
     },
     "footer": {
         "version": "Version",
-        "copyright": "All rights reserved."
+        "copyright": "Tous les droits sont réservés."
     },
     "views": {
         "user": {
-            "profile": "User Profile",
-            "following": "Following"
+            "profile": "Profil de l'utilisateur"
         }
     },
     "measurement": {

@@ -118,13 +118,13 @@ const Login = () => {
                         </div>
 
                         <div className="row">
-                            <div className="col-8">
+                            <div className="col-6">
                                 <Checkbox
                                     checked={false}
                                     label={t('login.label.rememberMe')}
                                 />
                             </div>
-                            <div className="col-4">
+                            <div className="col-6">
                                 <Button
                                     block
                                     type="submit"

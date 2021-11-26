@@ -4,14 +4,14 @@ import classes from './PageLoading.module.scss';
 const PageLoading = () => {
     return (
         <div className={classes.loading}>
-            <span>A</span>
-            <span>D</span>
-            <span>M</span>
-            <span>I</span>
-            <span>N</span>
-            <span>L</span>
-            <span>T</span>
             <span>E</span>
+            <span>-</span>
+            <span>P</span>
+            <span>H</span>
+            <span>A</span>
+            <span>R</span>
+            <span>M</span>
+            <span>A</span>
         </div>
     );
 };
