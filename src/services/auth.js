@@ -10,7 +10,6 @@ export const loginByAuth = async (email, password) => {
     document.getElementById('root').classList.remove('hold-transition');
     return token;
 };
-
 export const registerByAuth = async () => {
     // const token = await Gatekeeper.registerByAuth(email, password);
     const token = null;

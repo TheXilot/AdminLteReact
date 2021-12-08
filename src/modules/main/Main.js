@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {Gatekeeper} from 'gatekeeper-client-sdk';
+// import {Gatekeeper} from 'gatekeeper-client-sdk';
 import {loadUser, logoutUser} from '@store/reducers/auth';
 import {toggleSidebarMenu} from '@app/store/reducers/ui';
 
@@ -14,6 +14,7 @@ import Header from './header/Header';
 import Footer from './footer/Footer';
 import MenuSidebar from './menu-sidebar/MenuSidebar';
 import PageLoading from '../../components/page-loading/PageLoading';
+import {getProfile} from '../../api/auth';
 
 const Main = () => {
     const dispatch = useDispatch();
@@ -29,7 +30,8 @@ const Main = () => {
 
     const fetchProfile = async () => {
         try {
-            const response = await Gatekeeper.getProfile();
+            // const response = await Gatekeeper.getProfile();
+            const response = await getProfile();
             dispatch(loadUser(response));
             setIsAppLoaded(true);
         } catch (error) {

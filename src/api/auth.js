@@ -34,7 +34,13 @@ async function LoginUSER(email, password) {
     });
     return r.data;
 }
-
+async function getProfile() {
+    const r = await axios.get(API_ENDPOINTS.LOGGEDIN_USER(), {
+        withCredentials: true
+    });
+    console.log('in getProfile :', r);
+    return r.data;
+}
 // async function LoggedInUser() {
 //     return await axios.get(API_ENDPOINTS.LOGGEDIN_USER(), {
 //         withCredentials: true
@@ -47,4 +53,4 @@ async function LoginUSER(email, password) {
 //     });
 // }
 // export {AddUser, LoginUSER, LoggedInUser, LogOutUser};
-export {LoginUSER};
+export {LoginUSER, getProfile};

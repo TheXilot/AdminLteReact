@@ -89,8 +89,8 @@ const Login = () => {
             <div className="card card-outline card-primary">
                 <div className="card-header text-center">
                     <Link to="/" className="h1">
-                        <b>Admin</b>
-                        <span>LTE</span>
+                        <b>{process.env.REACT_APP_APP_NAME} </b>
+                        <span>System</span>
                     </Link>
                 </div>
                 <div className="card-body">
@@ -162,7 +162,7 @@ const Login = () => {
                             {t('login.button.signIn.social', {what: 'Google'})}
                         </Button>
                     </div> */}
-                    <p className="mb-1">
+                    {/* <p className="mb-1">
                         <Link to="/forgot-password">
                             {t('login.label.forgotPass')}
                         </Link>
@@ -171,7 +171,7 @@ const Login = () => {
                         <Link to="/register" className="text-center">
                             {t('login.label.registerNew')}
                         </Link>
-                    </p>
+                    </p> */}
                 </div>
             </div>
         </div>
