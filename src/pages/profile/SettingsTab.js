@@ -4,6 +4,7 @@ import {React, useEffect, useState} from 'react';
 import {useFormik} from 'formik';
 import {Button, Input} from '@components';
 import * as Yup from 'yup';
+import {axios} from 'axios';
 
 const SettingsTab = ({isActive}) => {
     const formik = useFormik({
@@ -13,7 +14,7 @@ const SettingsTab = ({isActive}) => {
             password: '',
             experience: '',
             competence: '',
-            digital_signature: ''
+            imageFile: ''
         },
         validationSchema: Yup.object({
             name: Yup.string().required('Required'),
@@ -25,11 +26,20 @@ const SettingsTab = ({isActive}) => {
                 .max(30, 'Saisir au maximum 30 caractères !'),
             experience: Yup.string().required('Required'),
             competence: Yup.string().required('Required'),
-            digital_signature: Yup.mixed().required()
+            // TODO:
+            imageFile: Yup.mixed()
         }),
         onSubmit: (values, actions) => {
             console.log(values);
             actions.setSubmitting(false);
+            axios
+                .get('http://localhost:3000')
+                .then((res) => {
+                    console.log(res.duration);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
         }
     });
     const [imgState, setImgState] = useState({
@@ -37,13 +47,13 @@ const SettingsTab = ({isActive}) => {
     });
 
     const [imageState, setImageState] = useState({
-        digital_signature: ''
+        imageFile: ''
     });
     const handleFileChange = (e) => {
         // console.log(e.target.files[0]);
         if (e.target.files[0] !== undefined) {
             setImageState({
-                digital_signature: e.target.files[0]
+                imageFile: e.target.files[0]
             });
             setImgState({
                 ...imgState,
@@ -52,11 +62,8 @@ const SettingsTab = ({isActive}) => {
         }
     };
     useEffect(() => {
-        formik.setFieldValue(
-            'digital_signature',
-            imageState?.digital_signature
-        );
-    }, [imageState?.digital_signature]);
+        formik.setFieldValue('imageFile', imageState?.imageFile);
+    }, [imageState?.imageFile]);
 
     return (
         <div className={`tab-pane ${isActive ? 'active' : ''}`}>
@@ -187,7 +194,7 @@ const SettingsTab = ({isActive}) => {
                             Charger
                             <input
                                 type="file"
-                                name="digital_signature"
+                                name="imageFile"
                                 className="form-control"
                                 style={{
                                     width: '100%',

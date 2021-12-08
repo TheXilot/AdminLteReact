@@ -14,8 +14,8 @@ import * as AuthService from '../../services/auth';
 
 const Login = () => {
     const [isAuthLoading, setAuthLoading] = useState(false);
-    const [isGoogleAuthLoading, setGoogleAuthLoading] = useState(false);
-    const [isFacebookAuthLoading, setFacebookAuthLoading] = useState(false);
+    // const [isGoogleAuthLoading, setGoogleAuthLoading] = useState(false);
+    // const [isFacebookAuthLoading, setFacebookAuthLoading] = useState(false);
     const dispatch = useDispatch();
 
     const history = useHistory();
@@ -35,33 +35,33 @@ const Login = () => {
         }
     };
 
-    const loginByGoogle = async () => {
-        try {
-            setGoogleAuthLoading(true);
-            const token = await AuthService.loginByGoogle();
-            toast.success('Login is succeeded!');
-            setGoogleAuthLoading(false);
-            dispatch(loginUser(token));
-            history.push('/');
-        } catch (error) {
-            setGoogleAuthLoading(false);
-            toast.error(error.message || 'Failed');
-        }
-    };
+    // const loginByGoogle = async () => {
+    //     try {
+    //         setGoogleAuthLoading(true);
+    //         const token = await AuthService.loginByGoogle();
+    //         toast.success('Login is succeeded!');
+    //         setGoogleAuthLoading(false);
+    //         dispatch(loginUser(token));
+    //         history.push('/');
+    //     } catch (error) {
+    //         setGoogleAuthLoading(false);
+    //         toast.error(error.message || 'Failed');
+    //     }
+    // };
 
-    const loginByFacebook = async () => {
-        try {
-            setFacebookAuthLoading(true);
-            const token = await AuthService.loginByFacebook();
-            toast.success('Login is succeeded!');
-            setFacebookAuthLoading(false);
-            dispatch(loginUser(token));
-            history.push('/');
-        } catch (error) {
-            setFacebookAuthLoading(false);
-            toast.error(error.message || 'Failed');
-        }
-    };
+    // const loginByFacebook = async () => {
+    //     try {
+    //         setFacebookAuthLoading(true);
+    //         const token = await AuthService.loginByFacebook();
+    //         toast.success('Login is succeeded!');
+    //         setFacebookAuthLoading(false);
+    //         dispatch(loginUser(token));
+    //         history.push('/');
+    //     } catch (error) {
+    //         setFacebookAuthLoading(false);
+    //         toast.error(error.message || 'Failed');
+    //     }
+    // };
 
     const formik = useFormik({
         initialValues: {
@@ -129,17 +129,17 @@ const Login = () => {
                                     block
                                     type="submit"
                                     isLoading={isAuthLoading}
-                                    disabled={
-                                        isFacebookAuthLoading ||
-                                        isGoogleAuthLoading
-                                    }
+                                    // disabled={
+                                    //     isFacebookAuthLoading ||
+                                    //     isGoogleAuthLoading
+                                    // }
                                 >
                                     {t('login.button.signIn.label')}
                                 </Button>
                             </div>
                         </div>
                     </form>
-                    <div className="social-auth-links text-center mt-2 mb-3">
+                    {/* <div className="social-auth-links text-center mt-2 mb-3">
                         <Button
                             block
                             icon="facebook"
@@ -161,7 +161,7 @@ const Login = () => {
                         >
                             {t('login.button.signIn.social', {what: 'Google'})}
                         </Button>
-                    </div>
+                    </div> */}
                     <p className="mb-1">
                         <Link to="/forgot-password">
                             {t('login.label.forgotPass')}

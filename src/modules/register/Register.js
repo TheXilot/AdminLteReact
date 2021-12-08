@@ -13,8 +13,8 @@ import * as AuthService from '../../services/auth';
 
 const Register = () => {
     const [isAuthLoading, setAuthLoading] = useState(false);
-    const [isGoogleAuthLoading, setGoogleAuthLoading] = useState(false);
-    const [isFacebookAuthLoading, setFacebookAuthLoading] = useState(false);
+    // const [isGoogleAuthLoading, setGoogleAuthLoading] = useState(false);
+    // const [isFacebookAuthLoading, setFacebookAuthLoading] = useState(false);
     const [t] = useTranslation();
     const dispatch = useDispatch();
 
@@ -34,34 +34,34 @@ const Register = () => {
         }
     };
 
-    const registerByGoogle = async () => {
-        try {
-            setGoogleAuthLoading(true);
-            const token = await AuthService.registerByGoogle();
-            setGoogleAuthLoading(false);
-            dispatch(loginUser(token));
-            toast.success('Authentication is succeed!');
-            history.push('/');
-        } catch (error) {
-            toast.error(error.message || 'Failed');
-            setGoogleAuthLoading(false);
-        }
-    };
+    // const registerByGoogle = async () => {
+    //     try {
+    //         setGoogleAuthLoading(true);
+    //         const token = await AuthService.registerByGoogle();
+    //         setGoogleAuthLoading(false);
+    //         dispatch(loginUser(token));
+    //         toast.success('Authentication is succeed!');
+    //         history.push('/');
+    //     } catch (error) {
+    //         toast.error(error.message || 'Failed');
+    //         setGoogleAuthLoading(false);
+    //     }
+    // };
 
-    const registerByFacebook = async () => {
-        try {
-            setFacebookAuthLoading(true);
+    // const registerByFacebook = async () => {
+    //     try {
+    //         setFacebookAuthLoading(true);
 
-            const token = await AuthService.registerByFacebook();
-            setFacebookAuthLoading(false);
-            dispatch(loginUser(token));
-            toast.success('Register is succeeded!');
-            history.push('/');
-        } catch (error) {
-            setFacebookAuthLoading(false);
-            toast.error(error.message || 'Failed');
-        }
-    };
+    //         const token = await AuthService.registerByFacebook();
+    //         setFacebookAuthLoading(false);
+    //         dispatch(loginUser(token));
+    //         toast.success('Register is succeeded!');
+    //         history.push('/');
+    //     } catch (error) {
+    //         setFacebookAuthLoading(false);
+    //         toast.error(error.message || 'Failed');
+    //     }
+    // };
 
     const formik = useFormik({
         initialValues: {
@@ -157,17 +157,17 @@ const Register = () => {
                                     type="submit"
                                     block
                                     isLoading={isAuthLoading}
-                                    disabled={
-                                        isFacebookAuthLoading ||
-                                        isGoogleAuthLoading
-                                    }
+                                    // disabled={
+                                    //     isFacebookAuthLoading ||
+                                    //     isGoogleAuthLoading
+                                    // }
                                 >
                                     {t('register.label')}
                                 </Button>
                             </div>
                         </div>
                     </form>
-                    <div className="social-auth-links text-center">
+                    {/* <div className="social-auth-links text-center">
                         <Button
                             block
                             icon="facebook"
@@ -189,7 +189,7 @@ const Register = () => {
                         >
                             {t('login.button.signUp.social', {what: 'Google'})}
                         </Button>
-                    </div>
+                    </div> */}
                     <Link to="/login" className="text-center">
                         {t('register.alreadyHave')}
                     </Link>
