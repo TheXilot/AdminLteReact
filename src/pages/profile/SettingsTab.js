@@ -5,11 +5,23 @@ import {useFormik} from 'formik';
 import {Button, Input} from '@components';
 import * as Yup from 'yup';
 import {axios} from 'axios';
+import {useSelector} from 'react-redux';
+import {getUser} from '@app/api/user';
 
 const SettingsTab = ({isActive}) => {
+    const userId = useSelector((state) => state.auth.currentUser.id);
+    const [user, setUser] = useState(undefined);
+
+    async function getUserData() {
+        const data = await getUser(userId);
+        setUser(data.data);
+    }
+    useEffect(() => {
+        getUserData();
+    }, []);
     const formik = useFormik({
         initialValues: {
-            name: 'Amine',
+            name: '',
             email: '',
             password: '',
             experience: '',
@@ -32,10 +44,11 @@ const SettingsTab = ({isActive}) => {
         onSubmit: (values, actions) => {
             console.log(values);
             actions.setSubmitting(false);
+            console.log('user : ', user.id);
             axios
-                .get('http://localhost:3000')
+                .put('http://localhost:5000/auth/')
                 .then((res) => {
-                    console.log(res.duration);
+                    console.log(res);
                 })
                 .catch((err) => {
                     console.log(err);
