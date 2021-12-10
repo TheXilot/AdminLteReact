@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 // import {Gatekeeper} from 'gatekeeper-client-sdk';
 import {loadUser, logoutUser} from '@store/reducers/auth';
 import {toggleSidebarMenu} from '@app/store/reducers/ui';
-
+// import {getUser} from '@app/store/reducers/userReducer';
 import Dashboard from '@pages/Dashboard';
 import Blank from '@pages/Blank';
 import SubMenu from '@pages/SubMenu';
@@ -33,6 +33,9 @@ const Main = () => {
             // const response = await Gatekeeper.getProfile();
             const response = await getProfile();
             dispatch(loadUser(response));
+            console.log('response 1 : ', response.data.id);
+            // const user = await getUser(response.payload);
+            // dispatch(getUser(user.id));
             setIsAppLoaded(true);
         } catch (error) {
             dispatch(logoutUser());
