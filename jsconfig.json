@@ -12,5 +12,8 @@
             "@pages/*": ["src/pages/*"]
         }
     },
-    "exclude": ["node_modules", "**/node_modules/*", "build"]
+    "exclude": ["node_modules", "**/node_modules/*", "build"],
+    "rules" : {        
+        "no-underscore-dangle": "off"
+     }
 }

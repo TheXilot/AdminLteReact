@@ -33,7 +33,7 @@ const Main = () => {
             // const response = await Gatekeeper.getProfile();
             const response = await getProfile();
             dispatch(loadUser(response));
-            console.log('response 1 : ', response.data.id);
+            console.log('response 1 : ', response);
             // const user = await getUser(response.payload);
             // dispatch(getUser(user.id));
             setIsAppLoaded(true);

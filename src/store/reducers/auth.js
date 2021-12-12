@@ -15,7 +15,7 @@ export const authSlice = createSlice({
     reducers: {
         loginUser: (state, {payload}) => {
             localStorage.setItem('token', payload);
-            console.log(payload);
+            console.log('payload loginUser :', payload);
             state.isLoggedIn = true;
             state.token = payload;
         },
@@ -26,7 +26,14 @@ export const authSlice = createSlice({
             state.token = null;
         },
         loadUser: (state, {payload}) => {
-            state.currentUser = payload;
+            if (payload.token) {
+                state.currentUser = payload.saveduser;
+                localStorage.setItem('token', payload.token);
+                state.token = payload.token;
+            } else {
+                state.currentUser = payload;
+            }
+            console.log('loaduser : ', payload);
         }
     }
 });

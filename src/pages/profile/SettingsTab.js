@@ -4,55 +4,58 @@ import {React, useEffect, useState} from 'react';
 import {useFormik} from 'formik';
 import {Button, Input} from '@components';
 import * as Yup from 'yup';
-import {axios} from 'axios';
-import {useSelector} from 'react-redux';
-import {getUser} from '@app/api/user';
+import {useDispatch, useSelector} from 'react-redux';
+import {loadUser} from '@app/store/reducers/auth';
+import axios from '../../utils/axios';
 
 const SettingsTab = ({isActive}) => {
-    const userId = useSelector((state) => state.auth.currentUser.id);
-    const [user, setUser] = useState(undefined);
-
-    async function getUserData() {
-        const data = await getUser(userId);
-        setUser(data.data);
-    }
-    useEffect(() => {
-        getUserData();
-    }, []);
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.auth.currentUser);
+    // fullName,
+    // experience,
+    // competence,
+    // picture,
+    // email,
     const formik = useFormik({
-        initialValues: {
-            name: '',
-            email: '',
-            password: '',
-            experience: '',
-            competence: '',
-            imageFile: ''
-        },
+        initialValues: user,
+        // initialValues: {
+        //     name: '',
+        //     email: '',
+        //     password: '',
+        //     experience: '',
+        //     competence: '',
+        //     picture: ''
+        // },
         validationSchema: Yup.object({
-            name: Yup.string().required('Required'),
+            fullName: Yup.string().required('Required'),
             email: Yup.string()
                 .email('Vous devez saisir un mail valide !')
                 .required('Required'),
-            password: Yup.string()
-                .min(6, 'Saisir au minimum 6 caractères !')
-                .max(30, 'Saisir au maximum 30 caractères !'),
+            // password: Yup.string()
+            //     .min(6, 'Saisir au minimum 6 caractères !')
+            //     .max(30, 'Saisir au maximum 30 caractères !'),
             experience: Yup.string().required('Required'),
             competence: Yup.string().required('Required'),
             // TODO:
-            imageFile: Yup.mixed()
+            picture: Yup.mixed()
         }),
-        onSubmit: (values, actions) => {
+        onSubmit: async (values, actions) => {
             console.log(values);
             actions.setSubmitting(false);
-            console.log('user : ', user.id);
-            axios
-                .put('http://localhost:5000/auth/')
+            // console.log('user : ', user.id);
+            const result = await axios
+                .put(`http://localhost:5000/auth/${user.id}`, values, {
+                    withCredentials: true
+                })
                 .then((res) => {
-                    console.log(res);
+                    return res.data;
                 })
                 .catch((err) => {
-                    console.log(err);
+                    console.log('submit error :', err);
                 });
+            console.log('result ', result);
+            result.id = result._id;
+            if (result) dispatch(loadUser(result));
         }
     });
     const [imgState, setImgState] = useState({
@@ -60,13 +63,13 @@ const SettingsTab = ({isActive}) => {
     });
 
     const [imageState, setImageState] = useState({
-        imageFile: ''
+        picture: ''
     });
     const handleFileChange = (e) => {
         // console.log(e.target.files[0]);
         if (e.target.files[0] !== undefined) {
             setImageState({
-                imageFile: e.target.files[0]
+                picture: e.target.files[0]
             });
             setImgState({
                 ...imgState,
@@ -75,8 +78,8 @@ const SettingsTab = ({isActive}) => {
         }
     };
     useEffect(() => {
-        formik.setFieldValue('imageFile', imageState?.imageFile);
-    }, [imageState?.imageFile]);
+        formik.setFieldValue('picture', imageState?.picture);
+    }, [imageState?.picture]);
 
     return (
         <div className={`tab-pane ${isActive ? 'active' : ''}`}>
@@ -89,9 +92,9 @@ const SettingsTab = ({isActive}) => {
                         <Input
                             type="text"
                             placeholder="Nom Complet"
-                            formikFieldProps={formik.getFieldProps('name')}
+                            formikFieldProps={formik.getFieldProps('fullName')}
                             formik={formik}
-                            value={formik.values.name}
+                            value={formik.values.fullName}
                             className="form-group p-1"
                             // formik={formik}
                             // formikFieldProps={formik.getFieldProps('name')}
@@ -115,7 +118,7 @@ const SettingsTab = ({isActive}) => {
                         />
                     </div>
                 </div>
-                <div className="form-group row">
+                {/* <div className="form-group row">
                     <label
                         htmlFor="password"
                         className="col-sm-2 col-form-label"
@@ -134,7 +137,7 @@ const SettingsTab = ({isActive}) => {
                             // formikFieldProps={formik.getFieldProps('password')}
                         />
                     </div>
-                </div>
+                </div> */}
                 <div className="form-group row">
                     <label
                         htmlFor="experience"
@@ -207,7 +210,7 @@ const SettingsTab = ({isActive}) => {
                             Charger
                             <input
                                 type="file"
-                                name="imageFile"
+                                name="picture"
                                 className="form-control"
                                 style={{
                                     width: '100%',
