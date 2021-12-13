@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 // import {ContentHeader, Button} from '@components';
 import {ContentHeader} from '@components';
@@ -6,8 +6,12 @@ import {useSelector} from 'react-redux';
 import SettingsTab from './SettingsTab';
 
 const Profile = () => {
+    const [activeTab, setActiveTab] = useState('ACTIVITY');
     const [t] = useTranslation();
     const user = useSelector((state) => state.auth.currentUser);
+    const toggle = (tab) => {
+        if (activeTab !== tab) setActiveTab(tab);
+    };
 
     return (
         <>
@@ -106,9 +110,60 @@ const Profile = () => {
                         </div>
                         <div className="col-md-9">
                             <div className="card">
+                                <div className="card-header p-2">
+                                    <ul className="nav nav-pills">
+                                        <li className="nav-item">
+                                            <button
+                                                type="button"
+                                                className={`nav-link ${
+                                                    activeTab === 'ACTIVITY'
+                                                        ? 'active'
+                                                        : ''
+                                                }`}
+                                                onClick={() =>
+                                                    toggle('ACTIVITY')
+                                                }
+                                            >
+                                                {t('main.label.activity')}
+                                            </button>
+                                        </li>
+                                        <li className="nav-item">
+                                            <button
+                                                type="button"
+                                                className={`nav-link ${
+                                                    activeTab === 'TIMELINE'
+                                                        ? 'active'
+                                                        : ''
+                                                }`}
+                                                onClick={() =>
+                                                    toggle('TIMELINE')
+                                                }
+                                            >
+                                                {t('main.label.timeline')}
+                                            </button>
+                                        </li>
+                                        <li className="nav-item">
+                                            <button
+                                                type="button"
+                                                className={`nav-link ${
+                                                    activeTab === 'SETTINGS'
+                                                        ? 'active'
+                                                        : ''
+                                                }`}
+                                                onClick={() =>
+                                                    toggle('SETTINGS')
+                                                }
+                                            >
+                                                {t('main.label.settings')}
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
                                 <div className="card-body">
                                     <div className="tab-content">
-                                        <SettingsTab isActive="SETTINGS" />
+                                        <SettingsTab
+                                            isActive={activeTab === 'SETTINGS'}
+                                        />
                                     </div>
                                 </div>
                             </div>

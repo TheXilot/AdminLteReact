@@ -31,7 +31,14 @@ const Login = () => {
             history.push('/');
         } catch (error) {
             setAuthLoading(false);
-            toast.error(error.message || 'Failed');
+            console.log({error});
+            if (error.response) {
+                if (error.response.data.errorMessage)
+                    toast.error(error.response.data.errorMessage);
+            } else {
+                toast.error(error.message || 'Failed');
+            }
+            // toast.error(error.message || 'Failed');
         }
     };
 
