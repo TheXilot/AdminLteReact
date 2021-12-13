@@ -33,6 +33,9 @@ export const authSlice = createSlice({
             } else {
                 state.currentUser = payload;
             }
+            if (state.currentUser.picture) {
+                state.currentUser.picture = `${process.env.REACT_APP_GATEKEEPER_URL}/${state.currentUser.picture}`;
+            }
             console.log('loaduser : ', payload);
         }
     }

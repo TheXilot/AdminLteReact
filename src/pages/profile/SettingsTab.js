@@ -33,8 +33,12 @@ const SettingsTab = ({isActive}) => {
             console.log('submit value : ', values);
             actions.setSubmitting(false);
             setIsLoading(true);
+            const data = new FormData();
+            Object.keys(values).forEach((key) => {
+                data.append(key, values[key]);
+            });
             const result = await axios
-                .put(`http://localhost:5000/auth/${user._id}`, values, {
+                .put(`http://localhost:5000/auth/${user._id}`, data, {
                     withCredentials: true,
                     headers: {'Content-Type': 'multipart/form-data'}
                 })
@@ -59,7 +63,7 @@ const SettingsTab = ({isActive}) => {
         }
     });
     const [imgState, setImgState] = useState({
-        path: '/img/default-profile.png'
+        path: user.picture
     });
 
     const [imageState, setImageState] = useState({
@@ -79,7 +83,6 @@ const SettingsTab = ({isActive}) => {
     useEffect(() => {
         formik.setFieldValue('picture', imageState?.picture);
     }, [imageState?.picture]);
-
     return (
         <div className={`tab-pane ${isActive ? 'active' : ''}`}>
             <form className="form-horizontal" onSubmit={formik.handleSubmit}>
