@@ -79,7 +79,9 @@
             "profile": "Profile",
             "blank": "Vierge",
             "mainMenu": "Menu principal",
-            "subMenu": "Sous-menu"
+            "subMenu": "Sous-menu",
+            "users": "Utilisateurs",
+            "adduser":"Ajouter utilisateur"
         }
     },
     "footer": {

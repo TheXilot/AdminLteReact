@@ -22,7 +22,8 @@ intance.interceptors.request.use(
 intance.interceptors.response.use(
     (response) => response,
     (error) => {
-        if (error.response.data.status === 401) {
+        console.log({error});
+        if (error.response.status === 401) {
             store.dispatch(logoutUser());
         }
         return Promise.reject(error);

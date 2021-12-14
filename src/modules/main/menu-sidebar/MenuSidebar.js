@@ -13,11 +13,11 @@ export const MENU = [
         path: '/blank'
     },
     {
-        name: 'menusidebar.label.mainMenu',
+        name: 'menusidebar.label.users',
         children: [
             {
-                name: 'menusidebar.label.subMenu',
-                path: '/sub-menu-1'
+                name: 'menusidebar.label.adduser',
+                path: '/add_user'
             },
 
             {

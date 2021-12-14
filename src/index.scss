@@ -9,10 +9,12 @@
 @import '~react-toastify/scss/main';
 
 #root {
-    width: 100vw;
+    // width: 100vw;
     height: 100vh;
 }
-
+.col-form-label{
+    font-weight: 500 !important;
+}
 .main-header .navbar-nav .nav-item .nav-link {
     background: transparent;
     border: none;
@@ -25,4 +27,9 @@
     width: 1.6rem;
     margin-right: 0;
     margin-left: -8px;
+}
+.card-body{
+    .form-group{
+        margin-bottom: 0.4rem;
+    }
 }

@@ -7,9 +7,9 @@ import {toggleSidebarMenu} from '@app/store/reducers/ui';
 // import {getUser} from '@app/store/reducers/userReducer';
 import Dashboard from '@pages/Dashboard';
 import Blank from '@pages/Blank';
-import SubMenu from '@pages/SubMenu';
 import Profile from '@pages/profile/Profile';
 
+import AddUser from '@app/pages/user/AddUser';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import MenuSidebar from './menu-sidebar/MenuSidebar';
@@ -87,11 +87,7 @@ const Main = () => {
                     <section className="content">
                         <Switch>
                             <Route exact path="/sub-menu-2" component={Blank} />
-                            <Route
-                                exact
-                                path="/sub-menu-1"
-                                component={SubMenu}
-                            />
+                            <Route exact path="/add_user" component={AddUser} />
                             <Route exact path="/blank" component={Blank} />
                             <Route exact path="/profile" component={Profile} />
                             <Route exact path="/" component={Dashboard} />
