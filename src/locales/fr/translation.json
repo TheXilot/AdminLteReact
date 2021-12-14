@@ -81,7 +81,8 @@
             "mainMenu": "Menu principal",
             "subMenu": "Sous-menu",
             "users": "Utilisateurs",
-            "adduser":"Ajouter utilisateur"
+            "adduser":"Ajouter utilisateur",
+            "indexuser":"Liste des utilisateurs"
         }
     },
     "footer": {

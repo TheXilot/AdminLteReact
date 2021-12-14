@@ -10,6 +10,7 @@ import Blank from '@pages/Blank';
 import Profile from '@pages/profile/Profile';
 
 import AddUser from '@app/pages/user/AddUser';
+import IndexUser from '@app/pages/user/IndexUser';
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import MenuSidebar from './menu-sidebar/MenuSidebar';
@@ -88,6 +89,11 @@ const Main = () => {
                         <Switch>
                             <Route exact path="/sub-menu-2" component={Blank} />
                             <Route exact path="/add_user" component={AddUser} />
+                            <Route
+                                exact
+                                path="/index_user"
+                                component={IndexUser}
+                            />
                             <Route exact path="/blank" component={Blank} />
                             <Route exact path="/profile" component={Profile} />
                             <Route exact path="/" component={Dashboard} />

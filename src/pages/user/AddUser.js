@@ -3,9 +3,6 @@ import {React, useEffect, useState} from 'react';
 import {useFormik} from 'formik';
 import {Button, Input} from '@components';
 import * as Yup from 'yup';
-import {useDispatch} from 'react-redux';
-import {loadUser} from '@app/store/reducers/auth';
-// import {useForm} from 'react-hook-form';
 import Loading from '@app/components/loading/loading';
 import {toast} from 'react-toastify';
 import {useTranslation} from 'react-i18next';
@@ -13,7 +10,6 @@ import axios from '../../utils/axios';
 
 const AddUser = () => {
     const [t] = useTranslation();
-    const dispatch = useDispatch();
     // const {register} = useForm();
     const [isloading, setIsLoading] = useState(false);
 
@@ -61,10 +57,8 @@ const AddUser = () => {
                 });
             setIsLoading(false);
             console.log('result ', result);
-            result.id = result._id;
             if (result) {
-                toast.success('Les Modifications sont bien enregistrées !');
-                dispatch(loadUser(result));
+                toast.success('enregistré avec succès !');
             }
         }
     });
@@ -149,7 +143,7 @@ const AddUser = () => {
                                         </div>
                                     </div>
                                     <div className="form-group row">
-                                        <div className="col-6 row">
+                                        <div className="col-md-6 row">
                                             <label
                                                 htmlFor="password"
                                                 className="col-sm-4 col-form-label"
@@ -172,7 +166,7 @@ const AddUser = () => {
                                                 />
                                             </div>
                                         </div>
-                                        <div className="col-6 row">
+                                        <div className="col-md-6 row">
                                             <label
                                                 htmlFor="passwordVerify"
                                                 className="col-sm-4 col-form-label"

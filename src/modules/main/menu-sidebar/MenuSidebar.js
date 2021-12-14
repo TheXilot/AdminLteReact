@@ -19,7 +19,10 @@ export const MENU = [
                 name: 'menusidebar.label.adduser',
                 path: '/add_user'
             },
-
+            {
+                name: 'menusidebar.label.indexuser',
+                path: '/index_user'
+            },
             {
                 name: 'menusidebar.label.blank',
                 path: '/sub-menu-2'
