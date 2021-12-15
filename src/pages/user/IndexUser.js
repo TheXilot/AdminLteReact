@@ -5,14 +5,23 @@ import {React} from 'react';
 const IndexUser = () => {
     const columns = [
         // '_id',
+        'picture',
         'email',
         'fullName',
         'experience',
         'competence',
         'education',
-        'location',
-        'picture'
+        'location'
     ];
+    const columnsName = {
+        picture: 'Image',
+        email: 'Email',
+        fullName: 'Nom Complet',
+        experience: 'Experience',
+        competence: 'Competence',
+        education: 'Education',
+        location: 'Localisation'
+    };
     return (
         <div className="container-fluid">
             <div className="row ">
@@ -25,6 +34,7 @@ const IndexUser = () => {
                             <DataTables
                                 url="http://localhost:5000/auth/"
                                 columns={columns}
+                                columnsName={columnsName}
                             />
                         </div>
                         <div className="card-footer" />
